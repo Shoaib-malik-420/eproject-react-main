@@ -18,7 +18,7 @@ function App() {
     createRoutesFromElements(
       <>
         <Route path='' element={
-        <AuthLayout><Home /></AuthLayout>
+        <AuthLayout><Dashboard /></AuthLayout>
         } />
         <Route path="login" element={
          <GuestLayout><Login /></GuestLayout>
