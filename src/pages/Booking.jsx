@@ -6,14 +6,13 @@ import { toast } from 'react-toastify';
 import * as Yup from 'Yup'
 
 const API_URL = import.meta.env.VITE_API_URL
-function Room() {
+function Booking() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [formData, setFormData] = useState({
-    type: '',
-    availability: '',
+    user: '',
+    room: '',
     status: '',
-    pricing: '',
   });
   const [rooms, setRooms] = useState([
     { id: 1, type: 'John Doe', availability: 'john.doe@example.com', status: '123-456-7890', pricing: 'Admin' },
@@ -106,11 +105,9 @@ function Room() {
         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Availability</th>
-
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
               <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Pricing</th>
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Room</th>
               <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
             </tr>
           </thead>
@@ -121,7 +118,6 @@ function Room() {
                 <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 text-center">{user.availability}</td>
 
                 <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 text-center">{user.status}</td>
-                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 text-center">{user.pricing}</td>
                 <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 text-center">
                   <div
                     onClick={() => {
@@ -172,25 +168,11 @@ function Room() {
             }}
             >
             <Form >
-              <div className="flex gap-4 mb-4">
-                <div className="w-1/2">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Availability</label>
-                  <Field
-                    type="datetime-local"
-                    id="availability"
-                    name="availability"
-
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600"
-                    required
-                  />
-                  <ErrorMessage name='availability' className='text-red-500' />
-                </div>
-              </div>
               <div className="mb-4">
-                <label htmlFor="room" className="block text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Type</label>
+                <label htmlFor="user" className="block text-sm font-medium text-gray-700 dark:text-gray-300 text-left">User</label>
                 <Field as="select"
-                  id="type"
-                  name="type"
+                  id="user"
+                  name="user"
                   className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600"
                   required
                 >
@@ -199,36 +181,35 @@ function Room() {
                     <option value="exhibitor">Lower AC</option>
                     <option value="attendee">Economy Class</option>
                 </Field>
-                <ErrorMessage name='type' className='text-red-500' />
+                <ErrorMessage name='user' className='text-red-500' />
               </div>
 
               <div className="mb-4">
-                <label htmlFor="status" className="block text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Status</label>
+                <label htmlFor="room" className="block text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Rooms</label>
                 <Field as="select"
-                  id="status"
-                  name="status"
+                  id="room"
+                  name="room"
                   className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600"
                   required
                 >
-                    <option value="">Status</option>
+                    <option value="">Select Rooms Type</option>
                     <option value="admin">Cleaning</option>
                     <option value="exhibitor">Occupied</option>
                     <option value="attendee">Available</option>
                 </Field>
-                <ErrorMessage name='status' className='text-red-500' />
+                <ErrorMessage name='room' className='text-red-500' />
               </div>
               <div className="w-1/2">
-                  <label htmlFor="pricing" className="block text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Pricing</label>
+                  <label htmlFor="status" className="block text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Status</label>
                   <Field
-                    type="number"
-                    step="any"
-                    id="pricing"
-                    name="pricing"
+                    type="status"
+                    id="status"
+                    name="status"
 
                     className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600"
                     required
                   />
-                  <ErrorMessage name='pricing' className='text-red-500' />
+                  <ErrorMessage name='status' className='text-red-500' />
                 </div>
               <div className="flex justify-end space-x-4">
                 <button
@@ -279,4 +260,4 @@ function Room() {
   );
 }
 
-export default Room;
+export default Booking;
