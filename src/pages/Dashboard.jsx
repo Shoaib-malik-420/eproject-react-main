@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { FaRegUser } from 'react-icons/fa';
 import axios from 'axios';
+import { MdOutlineEventNote } from "react-icons/md";
+import { MdOutlineDoorSliding } from "react-icons/md";
 const API_URL = import.meta.env.VITE_API_URL
 const rechartsData = [
   { name: 'Jan', uv: 4000, pv: 2400, amt: 2400 },
@@ -55,7 +57,7 @@ useEffect(()=>{
           </a>
           <div className="flex-row flex justify-between">
             <p className="font-normal text-black text-4xl font-semibold">{data.totalrooms}</p>
-            <div className="bg-orange-600 rounded-xl p-4 text-white"><FaRegUser size="28" /></div>
+            <div className="bg-orange-600 rounded-xl p-4 text-white"><MdOutlineDoorSliding size="28" /></div>
           </div>
           <h5 className="text-md font-semibold tracking-tight text-gray-500 dark:text-gray-400 text-left">Total Request</h5>
         </div>
@@ -66,7 +68,7 @@ useEffect(()=>{
           </a>
           <div className="flex-row flex justify-between">
             <p className="font-normal text-black text-4xl font-semibold">{data.totalbookings}</p>
-            <div className="bg-orange-600 rounded-xl p-4 text-white"><FaRegUser size="28" /></div>
+            <div className="bg-orange-600 rounded-xl p-4 text-white"><MdOutlineEventNote size="28" /></div>
           </div>
           <h5 className="text-md font-semibold tracking-tight text-gray-500 dark:text-gray-400 text-left">Total Consignment</h5>
         </div>

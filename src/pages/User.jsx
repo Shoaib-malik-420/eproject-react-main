@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import * as Yup from 'Yup'
+import * as Yup from 'yup';
 
 const API_URL = import.meta.env.VITE_API_URL
 function User() {
